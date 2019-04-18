@@ -1,0 +1,38 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Solution {
+   public boolean method(int[] arrays,int numbers){
+       if (arrays.length<=0)
+           return false;
+       Arrays.sort(arrays);
+       int length = arrays.length;
+       int times;
+       for (int i=0;i<length;++i){
+           while (arrays[i]!=i){
+               if (arrays[i]==arrays[arrays[i]]){
+                   numbers = arrays[i];
+                   return true;
+               }
+               
+               int temp = arrays[i];
+               arrays[i]=arrays[temp];
+               arrays[temp]=temp;
+           }
+       }
+       return false;
+   }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int numsCount = scanner.nextInt();
+        int[] arrays = new int[numsCount];
+        for (int i=0;i<numsCount;++i){
+            arrays[i] = scanner.nextInt();
+        }
+        Solution solution = new Solution();
+        int number =0;
+        boolean bool = solution.method(arrays,number);
+        System.out.println(bool+" "+number);
+    }
+}
